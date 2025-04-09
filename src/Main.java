@@ -10,7 +10,8 @@ public class Main {
 
         boolean inMenu = true;
         while(inMenu){
-            System.out.println("ToDo List Program: ");
+            System.out.println("Student Management System Program: ");
+            
             System.out.println("1. Add a Student");
             System.out.println("2. Add a Teacher");
             System.out.println("3. Add a Course");
@@ -23,7 +24,6 @@ public class Main {
             System.out.println("10. Delete Student");
             System.out.println("11. Exit");
 
-            System.out.println("What would you like to do?");
             System.out.println("Input the number of your choice: ");
 
             int choice = scanner.nextInt();
