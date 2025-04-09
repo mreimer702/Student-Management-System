@@ -38,7 +38,7 @@ class Person {
     class Student extends Person{
         private int studentId;
         private int grade;
-        private ArrayList<Course> courses;
+//        private ArrayList<Course> courses;
 
         public Student(String name, int age, String email, int studentId, int grade) {
             super(name, age, email);
@@ -66,13 +66,13 @@ class Person {
     class Teacher extends Person{
         private int teacherId;
         private String subject;
-        private ArrayList<Course> courses;
+//        private ArrayList<Course> courses;
 
-        public Teacher(String name, int age, String email) {
+        public Teacher(String name, int age, String email, int teacherId, String subject) {
             super(name, age, email);
             this.teacherId = teacherId;
             this.subject = subject;
-            this.courses = courses;
+//            this.courses = courses;
         }
 
         public int getTeacherId() {
@@ -83,9 +83,9 @@ class Person {
             return subject;
         }
 
-        public ArrayList<Course> getCourses() {
-            return courses;
-        }
+//        public ArrayList<Course> getCourses() {
+//            return courses;
+//        }
 
         public void setTeacherId(int teacherId) {
             this.teacherId = teacherId;
@@ -95,8 +95,8 @@ class Person {
             this.subject = subject;
         }
 
-        public void setCourses(ArrayList<Course> courses) {
-            this.courses = courses;
-        }
+//        public void setCourses(ArrayList<Course> courses) {
+//            this.courses = courses;
+//        }
     }
 }

@@ -2,10 +2,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    static ArrayList <Person.Student> students = new ArrayList<Person.Student>();
-    static ArrayList <Person.Teacher> teachers = new ArrayList<Person.Teacher>();
-    static ArrayList <Course> courses = new ArrayList<Course>();
-    static  Scanner scanner = new Scanner(System.in);
+    static ArrayList <Person.Student> students = new ArrayList<>();
+    static ArrayList <Person.Teacher> teachers = new ArrayList<>();
+    static ArrayList <Course> courses = new ArrayList<>();
+    static Scanner scanner = new Scanner(System.in);
+    private static int StudentId = 1;
+    private static int TeacherId = 1;
     public static void main(String[] args) {
 
         boolean inMenu = true;
@@ -31,10 +33,10 @@ public class Main {
 
             switch (choice){
                 case 1:
-                    System.out.println("Add a student");
+                    addStudent();
                     break;
                 case 2:
-                    System.out.println("Add a teacher");
+                    addTeacher();
                     break;
                 case 3:
                     System.out.println("Add a course");
@@ -71,12 +73,40 @@ public class Main {
         }
 
     }
-//    public static void addTodo(){
-//        String todoInput = scanner.nextLine();
-//        ToDo newTodo = new ToDo(todoInput, false);
-//        toDoList.add(newTodo);
-//        System.out.println(newTodo.getName() + " added to list");
-//    }
+    public static void addStudent(){
+        System.out.println("Enter student's name: ");
+        String nameInput = scanner.nextLine();
+        System.out.println("Enter student's age: ");
+        int ageInput = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Enter student's email: ");
+        String emailInput = scanner.nextLine();
+        System.out.println("Enter student's grade: ");
+        int gradeInput = scanner.nextInt();
+        scanner.nextLine();
+        Person person = new Person(nameInput, ageInput, emailInput);
+        Person.Student newStudent = person.new Student(nameInput, ageInput, emailInput, StudentId, gradeInput);
+        students.add(newStudent);
+        System.out.println(newStudent.getName() + " added successfully");
+        StudentId ++;
+    }
+
+    public static void addTeacher(){
+        System.out.println("Enter teacher's name: ");
+        String nameInput = scanner.nextLine();
+        System.out.println("Enter teacher's age: ");
+        int ageInput = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Enter teacher's email: ");
+        String emailInput = scanner.nextLine();
+        System.out.println("Enter teacher's subject: ");
+        String subjectInput = scanner.nextLine();
+        Person person = new Person(nameInput, ageInput, emailInput);
+        Person.Teacher newTeacher = person.new Teacher(nameInput, ageInput, emailInput, TeacherId, subjectInput);
+        teachers.add(newTeacher);
+        System.out.println(newTeacher.getName() + " added successfully");
+        TeacherId ++;
+    }
 //
 //    public static void viewTodo(){
 //        int count = 1;
