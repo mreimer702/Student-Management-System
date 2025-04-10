@@ -79,14 +79,32 @@ public class Main {
     public static void addStudent(){
         System.out.println("Enter student's name: ");
         String nameInput = scanner.nextLine();
+        while(nameInput.isEmpty()){
+            System.out.println("Please enter a student name");
+            nameInput = scanner.nextLine();
+        }
         System.out.println("Enter student's age: ");
         int ageInput = scanner.nextInt();
         scanner.nextLine();
+        while (ageInput <= 0){
+            System.out.println("Invalid Input. Please enter a valid age.");
+            ageInput = scanner.nextInt();
+            scanner.nextLine();
+        }
         System.out.println("Enter student's email: ");
         String emailInput = scanner.nextLine();
+        while(emailInput.isEmpty()){
+            System.out.println("Please enter a valid student email");
+            emailInput = scanner.nextLine();
+        }
         System.out.println("Enter student's grade: ");
         int gradeInput = scanner.nextInt();
         scanner.nextLine();
+        while (gradeInput <= 0){
+            System.out.println("Invalid Input. Please enter a valid grade.");
+            gradeInput = scanner.nextInt();
+            scanner.nextLine();
+        }
         ArrayList<Course> studentCourses = new ArrayList<Course>(5);
         Student newStudent = new Student(nameInput, ageInput, emailInput, StudentId, gradeInput, studentCourses);
         students.add(newStudent);
@@ -97,13 +115,30 @@ public class Main {
     public static void addTeacher(){
         System.out.println("Enter teacher's name: ");
         String nameInput = scanner.nextLine();
+        while(nameInput.isEmpty()){
+            System.out.println("Please enter a teacher name");
+            nameInput = scanner.nextLine();
+        }
         System.out.println("Enter teacher's age: ");
         int ageInput = scanner.nextInt();
         scanner.nextLine();
+        while (ageInput <= 0){
+            System.out.println("Invalid Input. Please enter a valid age.");
+            ageInput = scanner.nextInt();
+            scanner.nextLine();
+        }
         System.out.println("Enter teacher's email: ");
         String emailInput = scanner.nextLine();
+        while(emailInput.isEmpty()){
+            System.out.println("Please enter a valid teacher email");
+            emailInput = scanner.nextLine();
+        }
         System.out.println("Enter teacher's subject: ");
         String subjectInput = scanner.nextLine();
+        while(subjectInput.isEmpty()){
+            System.out.println("Please enter a valid subject");
+            subjectInput = scanner.nextLine();
+        }
         ArrayList<Course> teacherCourses = new ArrayList<Course>(3);
         Teacher newTeacher = new Teacher(nameInput, ageInput, emailInput, TeacherId, subjectInput, teacherCourses);
         teachers.add(newTeacher);
@@ -114,6 +149,10 @@ public class Main {
     public static void addCourse(){
         System.out.println("Enter the name of the course: ");
         String courseInput = scanner.nextLine();
+        while(courseInput.isEmpty()){
+            System.out.println("Please enter a course name");
+            courseInput = scanner.nextLine();
+        }
         Course newCourse = new Course(courseInput, CourseId);
         courses.add(newCourse);
         System.out.println(newCourse.getCourseName() + " added successfully");
@@ -190,6 +229,9 @@ public class Main {
 
     public static void getStudents(){
         System.out.println("List of Students By ID");
+        if (students.isEmpty()){
+            System.out.println("There are no students currently listed");
+        }
         for (Student student: students){
         System.out.println(student.getStudentId() + ". " + student.getName());
         }
@@ -197,6 +239,9 @@ public class Main {
 
     public static void getTeachers(){
         System.out.println("List of Teachers By ID");
+        if (teachers.isEmpty()){
+            System.out.println("There are no teachers currently listed");
+        }
         for (Teacher teacher: teachers){
             System.out.println(teacher.getTeacherId() + ". " + teacher.getName());
         }
@@ -225,6 +270,9 @@ public class Main {
     }
     public static void getStudentsAndTeachers(){
         System.out.println("List of Students By ID");
+        if (students.isEmpty()){
+            System.out.println("There are no students currently listed");
+        }
         for (Student student: students){
             System.out.println(student.getStudentId() + ". " + student.getName());
             System.out.println("Age: " + student.getAge());
@@ -238,6 +286,9 @@ public class Main {
             System.out.println("\n");
         }
         System.out.println("List of Teachers By ID");
+        if (teachers.isEmpty()){
+            System.out.println("There are no teachers currently listed");
+        }
         for (Teacher teacher: teachers){
             System.out.println(teacher.getTeacherId() + ". " + teacher.getName());
             System.out.println("Age: " + teacher.getAge());
@@ -249,18 +300,21 @@ public class Main {
             }
             System.out.println("Courses: " + String.join(", ", courseNames));
             System.out.println("\n");
-            System.out.println("\n");
         }
     }
 
     public static void getCourses(){
         System.out.println("List of Courses By ID");
+        if (courses.isEmpty()){
+            System.out.println("There are no teachers currently listed");
+        }
         for (Course course: courses){
             System.out.println(course.getCourseId() + ". " + course.getCourseName());
         }
     }
 
     public static void updateStudent() {
+        getStudents();
         System.out.println("Enter the ID of the student to update:");
         int id = scanner.nextInt();
         scanner.nextLine();
