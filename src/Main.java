@@ -139,7 +139,7 @@ public class Main {
             return;
         }
 
-        getStudentsAndTeachers();
+        getStudents();
         System.out.println("Enter Student ID to assign the course:");
         int studentId = scanner.nextInt();
         scanner.nextLine();
@@ -173,7 +173,7 @@ public class Main {
             return;
         }
 
-        getStudentsAndTeachers();
+        getTeachers();
         System.out.println("Enter Teacher ID to assign the course:");
         int teacherId = scanner.nextInt();
         scanner.nextLine();
@@ -188,12 +188,22 @@ public class Main {
         System.out.println("Teacher not found.");
     }
 
-
-    public static void getStudentById(){
+    public static void getStudents(){
         System.out.println("List of Students By ID");
         for (Student student: students){
-            System.out.println(student.getStudentId() + ". " + student.getName());
+        System.out.println(student.getStudentId() + ". " + student.getName());
         }
+    }
+
+    public static void getTeachers(){
+        System.out.println("List of Teachers By ID");
+        for (Teacher teacher: teachers){
+            System.out.println(teacher.getTeacherId() + ". " + teacher.getName());
+        }
+    }
+
+    public static void getStudentById(){
+        getStudents();
         System.out.println("Please enter the ID of the student you want to view: ");
         int idInput = scanner.nextInt();
         scanner.nextLine();
@@ -204,6 +214,11 @@ public class Main {
                 System.out.println("Age: " + student.getAge());
                 System.out.println("Email: " + student.getEmail());
                 System.out.println("Grade: " + student.getGrade());
+                ArrayList<String> courseNames = new ArrayList<>();
+                for (Course course : student.getCourses()) {
+                    courseNames.add(course.getCourseName());
+                }
+                System.out.println("Courses: " + String.join(", ", courseNames));
             }
         }
 
@@ -215,6 +230,12 @@ public class Main {
             System.out.println("Age: " + student.getAge());
             System.out.println("Email: " + student.getEmail());
             System.out.println("Grade: " + student.getGrade());
+            ArrayList<String> courseNames = new ArrayList<>();
+            for (Course course : student.getCourses()) {
+                courseNames.add(course.getCourseName());
+            }
+            System.out.println("Courses: " + String.join(", ", courseNames));
+            System.out.println("\n");
         }
         System.out.println("List of Teachers By ID");
         for (Teacher teacher: teachers){
@@ -222,6 +243,13 @@ public class Main {
             System.out.println("Age: " + teacher.getAge());
             System.out.println("Email: " + teacher.getEmail());
             System.out.println("Subject: " + teacher.getSubject());
+            ArrayList<String> courseNames = new ArrayList<>();
+            for (Course course : teacher.getCourses()) {
+                courseNames.add(course.getCourseName());
+            }
+            System.out.println("Courses: " + String.join(", ", courseNames));
+            System.out.println("\n");
+            System.out.println("\n");
         }
     }
 
